@@ -49,6 +49,10 @@ std::vector<NativeFunction> GetDateTimeFunctionRegistry() {
 
       TIME_EXTRACTION_FNS(extract),
 
+      NativeFunction("castDATE", {}, DataTypeVector{int32()}, date32(), kResultNullIfNull,
+                     "castDATE_int32",
+                     NativeFunction::kNeedsContext | NativeFunction::kCanReturnErrors),
+
       NativeFunction("castDATE", {}, DataTypeVector{utf8()}, date64(), kResultNullIfNull,
                      "castDATE_utf8",
                      NativeFunction::kNeedsContext | NativeFunction::kCanReturnErrors),
